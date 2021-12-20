@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:weather_icons/weather_icons.dart';
-import 'package:simple_icons/simple_icons.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ionicons/ionicons.dart';
-import 'package:icon/icon.dart';
+// import 'package:weather_icons/weather_icons.dart';
+// import 'package:simple_icons/simple_icons.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:ionicons/ionicons.dart';
+// import 'package:icon/icon.dart';
 
 void main() {
   runApp(const MyApp());
