@@ -1,5 +1,4 @@
 // ignore_for_file: file_names
-import 'dart:developer';
 
 import 'package:amanta/models/wheatherModel.dart';
 import 'package:amanta/services/location.dart';
@@ -11,16 +10,14 @@ class WeatherController extends GetxController {
   var currentWeather = WheatherModel().obs;
   ApiServices apiServices = ApiServices();
   getdata() async {
-    print('initilizing ');
     Position currentPossion = await LocationService.getpossient();
-    var data = await apiServices.fetchData(currentPossion);
-    currentWeather.value = WheatherModel.fromJson(data.data);
+    var weatherData = await apiServices.fetchData(currentPossion);
+    currentWeather.value = WheatherModel.fromJson(weatherData.data);
     update();
   }
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     getdata();
   }

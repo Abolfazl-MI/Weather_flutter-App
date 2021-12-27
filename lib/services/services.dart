@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:amanta/models/wheatherModel.dart';
 import 'package:dio/dio.dart';
 import 'package:geolocator/geolocator.dart';
 
