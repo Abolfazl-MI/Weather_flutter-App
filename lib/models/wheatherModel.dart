@@ -1,11 +1,13 @@
 // ignore_for_file: file_names
 // TODO برای سریالایزینگ اگه خواستیم میتونیم از پکیج ها استفاده کنیم اما این روش دستی هست که من اجرا میکنم :)
+import 'dart:ffi';
+
 class WheatherModel {
-  String? tempreture;
-  String? humedity; //todo  این رطوبت که املا اون شاید بد باشه
+  double? tempreture;
+  int? humedity; //todo  این رطوبت که املا اون شاید بد باشه
   String? desCribtion;
   String? cityName;
-  String? windSpeed;
+  int? windSpeed;
   WheatherModel(
       {this.tempreture,
       this.windSpeed,
@@ -13,9 +15,9 @@ class WheatherModel {
       this.desCribtion,
       this.humedity});
   WheatherModel.fromJson(Map<String, dynamic> json)
-      : tempreture = json['main']['temp'],
-        windSpeed = json['wind']['speed'],
+      : tempreture = json['main']['temp'] as double,
+        windSpeed = json['wind']['speed'] as int,
         cityName = json['name'],
-        humedity = json['main']['humidity'],
-        desCribtion = json['weather']['description'];
+        humedity = json['main']['humidity'] as int,
+        desCribtion = json['weather'][0]['description'];
 }

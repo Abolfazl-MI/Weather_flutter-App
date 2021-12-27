@@ -1,7 +1,13 @@
+import 'package:amanta/screens/splashScreem.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'screens/homeScreen.dart';
 
+// TODO controller impelement
+// TODO pass data to server
+// TODO notification implemention
+//! FIXME  have issue in json parsing Fix that
 void main() {
   runApp(const MyApp());
 }
@@ -12,10 +18,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: const Homepage(),
+      home: SplashScreen(),
     );
   }
 }
