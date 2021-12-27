@@ -1,11 +1,12 @@
 // ignore_for_file: file_names
 
 import 'package:amanta/widgets/widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -24,9 +25,14 @@ class Homepage extends StatelessWidget {
             )),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () async {
+                await Share.share(
+                  'this is test  from flutter app :) ',
+                  subject: 'my weather',
+                );
+              },
               icon: const Icon(
-                Icons.location_pin,
+                CupertinoIcons.location_fill,
                 size: 30,
               ))
         ],
@@ -169,3 +175,14 @@ class Homepage extends StatelessWidget {
 //      icons: ,
 //                     titel: "25%",
 //                   )
+//  if (imagePaths.isNotEmpty) {
+//       await Share.shareFiles(imagePaths,
+//           text: text,
+//           subject: subject,
+//           sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
+//     } else {
+//       await Share.share(text,
+//           subject: subject,
+//           sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
+//     }
+  
