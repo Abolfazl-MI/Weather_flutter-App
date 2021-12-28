@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 import 'package:amanta/controller/weathrComtroller.dart';
+import 'package:amanta/utils/costance.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -18,13 +19,7 @@ class SplashScreen extends StatelessWidget {
               child: Lottie.asset(
             'assets/lotties/weather.json',
           )),
-          const Text(
-            'Amata weather',
-            style: TextStyle(
-                fontSize: 25,
-                fontFamily: 'FugazOne',
-                fontWeight: FontWeight.bold),
-          )
+          Text('Amata weather', style: kSplashText)
         ],
       ),
     );

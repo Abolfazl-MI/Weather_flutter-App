@@ -1,3 +1,4 @@
+import 'package:amanta/utils/costance.dart';
 import 'package:flutter/material.dart';
 
 class IconDown extends StatelessWidget {
@@ -17,21 +18,13 @@ class IconDown extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          lableUp!,
-          style: const TextStyle(
-              fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
-        ),
+        Text(lableUp!, style: kIconDownLableUp),
         Icon(
           icons!,
           size: 30,
           color: color!,
         ),
-        Text(
-          lableDown!,
-          style: const TextStyle(
-              fontWeight: FontWeight.w700, fontSize: 20, color: Colors.amber),
-        ),
+        Text(lableDown!, style: kIconDownLableDown),
       ],
     );
   }
@@ -55,7 +48,7 @@ class IconUP extends StatelessWidget {
         ),
         Text(
           titel!,
-          style: const TextStyle(fontSize: 30, color: Colors.amber),
+          style: IconUpStyle,
         )
       ],
     );
