@@ -7,7 +7,7 @@ class WheatherModel {
   int? humedity; //todo  این رطوبت که املا اون شاید بد باشه
   String? desCribtion;
   String? cityName;
-  int? windSpeed;
+  double? windSpeed;
   WheatherModel(
       {this.tempreture,
       this.windSpeed,
@@ -16,7 +16,7 @@ class WheatherModel {
       this.humedity});
   WheatherModel.fromJson(Map<String, dynamic> json)
       : tempreture = json['main']['temp'] as double,
-        windSpeed = json['wind']['speed'] as int,
+        windSpeed = json['wind']['speed'] as double,
         cityName = json['name'],
         humedity = json['main']['humidity'] as int,
         desCribtion = json['weather'][0]['description'];
