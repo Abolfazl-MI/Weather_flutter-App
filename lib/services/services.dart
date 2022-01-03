@@ -23,8 +23,9 @@ class ApiServices {
       });
       return response!;
     } catch (e) {
-      log('${e}');
+      log('$e');
     }
+
     return response!;
   }
 }

@@ -1,6 +1,5 @@
 // ignore_for_file: file_names
 // TODO برای سریالایزینگ اگه خواستیم میتونیم از پکیج ها استفاده کنیم اما این روش دستی هست که من اجرا میکنم :)
-import 'dart:ffi';
 
 class WheatherModel {
   double? tempreture;
