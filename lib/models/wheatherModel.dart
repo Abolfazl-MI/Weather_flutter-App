@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
-// TODO برای سریالایزینگ اگه خواستیم میتونیم از پکیج ها استفاده کنیم اما این روش دستی هست که من اجرا میکنم :)
 
 class WheatherModel {
   double? tempreture;
-  int? humedity; //todo  این رطوبت که املا اون شاید بد باشه
+  int  ? humedity;
   String? desCribtion;
   String? cityName;
-  double? windSpeed;
+  num ? windSpeed;
+  num  ? condition;
   WheatherModel(
       {this.tempreture,
       this.windSpeed,
@@ -15,8 +15,10 @@ class WheatherModel {
       this.humedity});
   WheatherModel.fromJson(Map<String, dynamic> json)
       : tempreture = json['main']['temp'] as double,
-        windSpeed = json['wind']['speed'] as double,
+        windSpeed = json['wind']['speed'] as num,
         cityName = json['name'],
-        humedity = json['main']['humidity'] as int,
-        desCribtion = json['weather'][0]['description'];
+        humedity = json['main']['humidity'] as int ,
+        desCribtion = json['weather'][0]['description'] ,
+        condition=json['weather'][0]['id'] as num 
+        ;
 }

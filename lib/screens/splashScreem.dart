@@ -19,7 +19,7 @@ class SplashScreen extends StatelessWidget {
               child: Lottie.asset(
             'assets/lotties/weather.json',
           )),
-          Text('Amata weather', style: kSplashText)
+          Text('Amata weather', style: Constants.instance.kSplashText)
         ],
       ),
     );

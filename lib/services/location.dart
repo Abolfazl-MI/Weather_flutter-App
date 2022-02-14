@@ -8,21 +8,21 @@ class LocationService {
     try {
       isServiceEnable = await Geolocator.isLocationServiceEnabled();
       if (!isServiceEnable) {
-        throw Exception('location service is not enabled');
+        return Future.error('Location service is not enable');
       }
       permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.denied) {
-          throw Exception('access denied');
+          return Future.error('Location permission is not granted');
         }
         if (permission == LocationPermission.deniedForever) {
-          throw Exception('denied for forever');
+          return Future.error('Location permission is not granted');
         }
       }
 
       position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.low);
+          desiredAccuracy: LocationAccuracy.high);
       return position;
     } catch (e) {
       throw e;

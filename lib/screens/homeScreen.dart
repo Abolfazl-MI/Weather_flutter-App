@@ -21,12 +21,6 @@ class Homepage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.menu,
-              size: 30,
-            )),
         actions: [
           GetBuilder<WeatherController>(
             init: WeatherController(),
@@ -45,86 +39,88 @@ class Homepage extends StatelessWidget {
         ],
         title: Text(
           'Weather',
-          style: kHeader,
+          style: Constants.instance.kHeader,
         ),
       ),
+      //
       body: Container(
-        decoration: kBackGround,
+        decoration: Constants.instance.kBackGround,
         child: Container(
           width: width,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              GetBuilder<WeatherController>(
-                init: WeatherController(),
-                builder: (_) =>
-                    Text(_.currentWeather.value.cityName!, style: kBoldInfo),
-              ),
-              const Icon(
-                Icons.cloud_sharp,
-                size: 108,
-                color: Colors.white,
-              ),
-              GetBuilder<WeatherController>(
-                  init: WeatherController(),
-                  builder: (_) => Text('${_.currentWeather.value.tempreture}°',
-                      style: kBoldInfo)),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: width * 0.09),
-                width: width,
-                height: height * 0.1,
-                child: GetBuilder<WeatherController>(
-                  init: WeatherController(),
-                  builder: (_) => Row(
+          child: GetBuilder<WeatherController>(
+            init: WeatherController(),
+            builder: (controller) => Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(controller.currentWeather.value.cityName!,
+                    style: Constants.instance.kBoldInfo),
+
+                Container(
+                  width: width,
+                  height: height * 0.2,
+                  child: Widgets.instance.iconPlaceHolder(
+                      controller.currentWeather.value.condition!),
+                ),
+
+                Text('${controller.currentWeather.value.tempreture}°',
+                    style: Constants.instance.kBoldInfo),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: width * 0.09),
+                  width: width,
+                  height: height * 0.1,
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      IconUP(
-                        titel: '${_.currentWeather.value.windSpeed} km/s',
+                      Widgets.instance.iconUp(
+                        titel:
+                            '${controller.currentWeather.value.windSpeed} km/s',
                         icons: Icons.air_rounded,
                       ),
-                      IconUP(
+                      Widgets.instance.iconUp(
                         icons: Icons.device_thermostat_outlined,
-                        titel: "${_.currentWeather.value.humedity}%",
+                        titel: "${controller.currentWeather.value.humedity}%",
                       ),
-                      IconUP(titel: '25%', icons: Icons.cloud_circle_outlined)
+                      Widgets.instance.iconUp(
+                          titel: '25%', icons: Icons.cloud_circle_outlined)
                     ],
                   ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: width * 0.04),
-                width: width,
-                height: height * 0.1,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconDown(
-                      icons: Icons.cloud,
-                      color: Colors.white,
-                      lableDown: "13°",
-                      lableUp: "12:00",
-                    ),
-                    IconDown(
-                        icons: Icons.wb_sunny,
-                        color: Colors.yellow,
-                        lableDown: "21°",
-                        lableUp: "13:00"),
-                    IconDown(
-                        icons: Icons.cloud,
-                        color: Colors.white,
-                        lableDown: "15°",
-                        lableUp: "14:00"),
-                    IconDown(
-                        icons: Icons.wb_sunny,
-                        color: Colors.yellow,
-                        lableDown: "30°",
-                        lableUp: "10:00"),
 
-                    //
-                  ],
-                ),
-              )
-            ],
+                // Container(
+                //   margin: EdgeInsets.symmetric(horizontal: width * 0.04),
+                //   width: width,
+                //   height: height * 0.1,
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: [
+                //       IconDown(
+                //         icons: Icons.cloud,
+                //         color: Colors.white,
+                //         lableDown: "13°",
+                //         lableUp: "12:00",
+                //       ),
+                //       IconDown(
+                //           icons: Icons.wb_sunny,
+                //           color: Colors.yellow,
+                //           lableDown: "21°",
+                //           lableUp: "13:00"),
+                //       IconDown(
+                //           icons: Icons.cloud,
+                //           color: Colors.white,
+                //           lableDown: "15°",
+                //           lableUp: "14:00"),
+                //       IconDown(
+                //           icons: Icons.wb_sunny,
+                //           color: Colors.yellow,
+                //           lableDown: "30°",
+                //           lableUp: "10:00"),
+
+                //       //
+                //     ],
+                //   ),
+                // )
+              ],
+            ),
           ),
         ),
       ),

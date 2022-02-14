@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:amanta/utils/costance.dart';
 import 'package:dio/dio.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -12,18 +13,18 @@ class ApiServices {
     var lat = possion.latitude;
     var lon = possion.longitude;
 
-    String? link = 'https://api.openweathermap.org/data/2.5/weather';
-    String apikey = '9bbb071dda1a4d958dae4f004cb5f92c';
+
     try {
-      response = await dio.get(link, queryParameters: {
+      response = await dio.get(Constants.instance.url, queryParameters: {
         'lat': lat,
         'lon': lon,
-        'appid': apikey,
+        'appid': Constants.instance.apiKey,
         'units': 'metric'
       });
       return response!;
     } catch (e) {
-      log('$e');
+      throw Exception(e);
+      log(e.toString());
     }
 
     return response!;
