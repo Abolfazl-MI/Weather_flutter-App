@@ -1,7 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:amanta/controller/weathrComtroller.dart';
-import 'package:amanta/models/wheatherModel.dart';
+import 'package:amanta/screens/otherScreen.dart';
+
 import 'package:amanta/utils/costance.dart';
 import 'package:amanta/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,6 +19,7 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -37,10 +39,6 @@ class Homepage extends StatelessWidget {
                 )),
           )
         ],
-        title: Text(
-          'Weather',
-          style: Constants.instance.kHeader,
-        ),
       ),
       //
       body: Container(
@@ -50,7 +48,7 @@ class Homepage extends StatelessWidget {
           child: GetBuilder<WeatherController>(
             init: WeatherController(),
             builder: (controller) => Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(controller.currentWeather.value.cityName!,
                     style: Constants.instance.kBoldInfo),
@@ -59,10 +57,12 @@ class Homepage extends StatelessWidget {
                   width: width,
                   height: height * 0.2,
                   child: Widgets.instance.iconPlaceHolder(
-                      controller.currentWeather.value.condition!),
+                      controller.currentWeather.value.condition ?? 800),
                 ),
 
                 Text('${controller.currentWeather.value.tempreture}°',
+                    style: Constants.instance.kBoldInfo),
+                Text('${controller.currentWeather.value.desCribtion}',
                     style: Constants.instance.kBoldInfo),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: width * 0.09),
@@ -80,44 +80,33 @@ class Homepage extends StatelessWidget {
                         icons: Icons.device_thermostat_outlined,
                         titel: "${controller.currentWeather.value.humedity}%",
                       ),
-                      Widgets.instance.iconUp(
-                          titel: '25%', icons: Icons.cloud_circle_outlined)
+                      
                     ],
                   ),
                 ),
 
-                // Container(
-                //   margin: EdgeInsets.symmetric(horizontal: width * 0.04),
-                //   width: width,
-                //   height: height * 0.1,
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       IconDown(
-                //         icons: Icons.cloud,
-                //         color: Colors.white,
-                //         lableDown: "13°",
-                //         lableUp: "12:00",
-                //       ),
-                //       IconDown(
-                //           icons: Icons.wb_sunny,
-                //           color: Colors.yellow,
-                //           lableDown: "21°",
-                //           lableUp: "13:00"),
-                //       IconDown(
-                //           icons: Icons.cloud,
-                //           color: Colors.white,
-                //           lableDown: "15°",
-                //           lableUp: "14:00"),
-                //       IconDown(
-                //           icons: Icons.wb_sunny,
-                //           color: Colors.yellow,
-                //           lableDown: "30°",
-                //           lableUp: "10:00"),
+                TextButton(
+                    onPressed: () {
+                      Get.to(OtherScreen(), transition: Transition.cupertino);
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'See about other hoours',
+                          style: Constants.instance.kIconDownLableDown,
+                        ),
+                        const Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.white,
+                        )
+                      ],
+                    )),
 
-                //       //
-                //     ],
-                //   ),
+                const SizedBox(
+                  height: 1,
+                )
+
                 // )
               ],
             ),
@@ -127,28 +116,6 @@ class Homepage extends StatelessWidget {
     );
   }
 
-  // iconner({double? condition}) {
-  //   if (condition! > 0 && condition < 20) {
-  //     return
-  //   }
-  // }
-//  String getWeatherIcon(int condition) {
-//     if (condition < 300) {
-//       return '🌩';
-//     } else if (condition < 400) {
-//       return '🌧';
-//     } else if (condition < 600) {
-//       return '☔️';
-//     } else if (condition < 700) {
-//       return '☃️';
-//     } else if (condition < 800) {
-//       return '🌫';
-//     } else if (condition == 800) {
-//       return '☀️';
-//     } else if (condition <= 804) {
-//       return '☁️';
-//     } else {
-//       return '🤷‍';
-//     }
-//   }
+// TODO ! import ant amke next update to give time and city from user and show the result in the app
+
 }

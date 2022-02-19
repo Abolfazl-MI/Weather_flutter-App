@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:amanta/controller/weathrComtroller.dart';
-import 'package:amanta/models/wheatherModel.dart';
+import 'package:amanta/models/currentWeather_modle.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

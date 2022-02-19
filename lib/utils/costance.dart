@@ -26,6 +26,7 @@ class Constants {
     fontFamily: 'FugazOne',
   );
   String url = 'https://api.openweathermap.org/data/2.5/weather';
+  String hUrl = 'https://api.openweathermap.org/data/2.5/onecall';
   String apiKey = '9bbb071dda1a4d958dae4f004cb5f92c';
   String thunderStorem = 'assets/images/weatherCondition/thunderstorm.png';
   String drizzel = 'assets/images/weatherCondition/drizzle.png';
@@ -33,5 +34,4 @@ class Constants {
   String snow = 'assets/images/weatherCondition/snow.png';
   String cloud = 'assets/images/weatherCondition/clouds.png';
   String clearSky = 'assets/images/weatherCondition/sunny.png';
-  
 }

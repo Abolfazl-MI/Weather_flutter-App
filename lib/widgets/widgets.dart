@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:amanta/utils/costance.dart';
 import 'package:flutter/material.dart';
 
@@ -78,14 +80,16 @@ class Widgets {
   }
 
   iconDown(
-      {String? lableUp, String? lableDown, IconData? icons, Color? color}) {
+      {String? lableUp, String? lableDown, int ? conddition, Color? color}) {
     return Column(
       children: [
         Text(lableUp!, style: Constants.instance.kIconDownLableUp),
-        Icon(
-          icons!,
-          size: 30,
-          color: color!,
+        const SizedBox(
+          height: 15,
+        ),
+        SizedBox(width: 60, height: 60, child: iconPlaceHolder(conddition!)),
+        const SizedBox(
+          height: 15,
         ),
         Text(lableDown!, style: Constants.instance.kIconDownLableDown),
       ],
@@ -106,21 +110,27 @@ class Widgets {
         width: 100,
       );
     }
-    if (condition > 200 && condition == 300) {
+    if (condition > 200 && condition == 300 ||
+        condition > 300 && condition < 400) {
       return Image.asset(Constants.instance.drizzel);
     }
-    if (condition > 300 && condition == 500) {
+    if (condition > 300 && condition == 500 ||
+        condition > 500 && condition < 600) {
       return Image.asset(Constants.instance.rain);
     }
-    if (condition > 500 && condition == 600) {
+    if (condition > 500 && condition == 600 ||
+        condition > 600 && condition < 700) {
       return Image.asset(Constants.instance.snow);
     }
-    if (condition > 600 && condition == 700) {
+    if (condition > 600 && condition == 700 ||
+        condition > 700 && condition < 800) {
       return Image.asset(Constants.instance.cloud);
     }
-    if (condition > 700 && condition == 800) {
+    if (condition > 700 && condition == 800 ||
+        condition > 800 && condition < 900) {
       return Image.asset(Constants.instance.clearSky);
     }
+
     //   if (condition < 100) {
     //     return Icon(Icons.not_interested_sharp);
     //   }
@@ -141,5 +151,16 @@ class Widgets {
     //       800;
     //   }
     // }
+  
+  }
+
+  String  dataFormater(int time ){
+    var date = new DateTime.fromMicrosecondsSinceEpoch(time * 1000);
+    String my_data_To_str = date.toString().split(' ')[1].split('.')[0];
+    String final_hour = my_data_To_str.split(':')[0];
+    String final_min = my_data_To_str.split(':')[1];
+    String final_time = '$final_hour:$final_min';  
+    return final_time; 
+
   }
 }
